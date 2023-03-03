@@ -43,12 +43,53 @@ function missingNum(arr) {
     if (arr[i] < min) min = arr[i];
   }
   for (i = min; i < maxnum; i++) {
-    for (j = 0; j < arr.length; i++) {
+    for (j = 0; j < arr.length; j++) {
       if (i == arr[j]) flag++;
     }
+
     if (flag == 0) return i;
     flag = 0;
   }
+  return 1;
 }
 
 console.log(missingNum([1, 2, 3, 6, 7, 4]));
+
+// Write a program in JS to find largest number possible from the set of given numbers
+
+function maxnumber(arr) {
+  string = "";
+  arr1 = [];
+  for (let number of arr) {
+    if (number > 9) {
+      while (number > 1) {
+        arr1.push(number % 10);
+        number = Math.trunc(number / 10);
+      }
+    }
+    arr1.push(number);
+  }
+  arr2 = arr1.sort((a, b) => {
+    return b - a;
+  });
+  for (i = 0; i < arr2.length; i++) {
+    string += arr2[i];
+  }
+  return +string;
+}
+console.log(maxnumber([15, 628, 971, 9, 2143, 12]));
+
+//Write a program in JS to count all distinct pairs for a specific difference.
+
+function pairs(arr, num) {
+  arr1 = [];
+  for (i = 0; i < arr.length; i++) {
+    for (j = i; j < arr.length; j++) {
+      if (Math.abs(arr[i] - arr[j]) == num) {
+        arr1.push([arr[j], arr[i]]);
+      }
+    }
+  }
+  return arr1;
+}
+console.log(pairs([5, 2, 3, 7, 6, 4, 9, 8], 5));

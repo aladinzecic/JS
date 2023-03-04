@@ -93,3 +93,44 @@ function pairs(arr, num) {
   return arr1;
 }
 console.log(pairs([5, 2, 3, 7, 6, 4, 9, 8], 5));
+
+//Write a program in JS to count all distinct pairs for a specific difference.
+//The given array is:
+// 2 7 12 25 4 57 27 44
+// The maximum element which is increasing then decreasing is: 57
+
+function increase(arr) {
+  max = arr[0];
+  flag = 0;
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      for (j = i; j < arr.length; j++) {
+        if (arr[j] > arr[i]) flag++;
+      }
+      if (flag == 0) {
+        max = arr[i];
+      }
+    }
+    flag = 0;
+  }
+  return max;
+}
+console.log(increase([2, 7, 12, 25, 4, 57, 27, 44]));
+
+//Write a program in C to rearrange an array in such an order that– smallest, largest, 2nd smallest, 2nd largest and on.
+
+function sort1(arr) {
+  arr2 = [];
+  br = 0;
+  arr1 = arr.sort((a, b) => {
+    return a - b;
+  });
+  for (i = 0; i < arr1.length; i++) {
+    if (i % 2 == 1) {
+      br++;
+      arr2.push(arr1[arr1.length - br]);
+    } else arr2.push(arr1[i - br]);
+  }
+  return arr2;
+}
+console.log(sort1([5, 8, 1, 4, 2, 9, 3, 7, 6]));
